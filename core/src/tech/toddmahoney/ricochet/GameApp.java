@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -12,6 +13,8 @@ public class GameApp extends ApplicationAdapter {
     private Texture blueTankImage;
     private Sound cannonSound;
     private Sound ricochetSound;
+    private OrthographicCamera camera;
+    private SpriteBatch batch;
 	
 	@Override
 	public void create () {
@@ -22,6 +25,11 @@ public class GameApp extends ApplicationAdapter {
         // load the sounds
         cannonSound = Gdx.audio.newSound(Gdx.files.internal("cannon.mp3"));
         cannonSound = Gdx.audio.newSound(Gdx.files.internal("rico.mp3"));
+        //load the camera
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, 800, 480);
+        //load the spritebatch
+        batch = new SpriteBatch();
 	}
 
 	@Override
